@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midwest Training & Consulting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        function siteHandler() {
+            return {
+                view: 'home',
+                activeService: null,
+                scrolled: false,
+                isMenuOpen: false,
+                LINKEDIN_URL: "https://www.linkedin.com/company/midwest-training-and-consulting-services/posts/?feedView=all&viewAsMember=true",
+                
+                init() {
+                    window.addEventListener('scroll', () => { 
+                        this.scrolled = window.scrollY > 20 
+                    });
+                    this.updateIcons();
+                },
+                
+                getInitials(name) {
+                    if(!name) return '';
+                    return name.split(' ').map(n => n[0]).join('');
+                },
+
+                updateIcons() {
+                    setTimeout(() => { 
+                        if(window.lucide) window.lucide.createIcons(); 
+                    }, 50);
+                },
+                
+                goHome() {
+                    this.view = 'home';
+                    this.isMenuOpen = false;
+                    window.scrollTo(0,0);
+                    this.updateIcons();
+                },
+                
+                openService(service) {
+                    this.activeService = service;
+                    this.view = 'detail';
+                    this.isMenuOpen = false;
+                    window.scrollTo(0,0);
+                    this.updateIcons();
+                },
+
+                industries: [
+                    { title: "Transportation", details: "Air (Gov/FBO/AG), Trucking (181 Facilities Total)", icon: "truck" },
+                    { title: "Municipalities", details: "Road/Bridge, Landfills, Power Plants, Wastewater (166 Facilities)", icon: "landmark" },
+                    { title: "Ready Mix & Aggregate", details: "Aggregate & Ready Mix Organizations (162 Facilities)", icon: "hammer" },
+                    { title: "Energy & Fuel", details: "Convenience Stores & Fuel Transporters (104 Facilities)", icon: "fuel" },
+                    { title: "Equipment Dealers", details: "Sales, Rental, and Service Organizations (108 Facilities)", icon: "wrench" }
+                ],
+
+                team: [
+                    { name: "Rick Smith", role: "Owner / Senior Consultant", bio: "Over 25 years of experience in Safety, Health, and Environmental fields. Rick leads MTCS with iron-clad compliance solutions.", email: "rick@midwest-training.com", phone: "913-638-3455" },
+                    { name: "Steve Spencer", role: "Sales and Marketing", bio: "25 plus years in Health, Safety and Environment Management. Driving business growth and client safety excellence.", email: "steve@midwest-training.com", phone: "316-644-6102" },
+                    { name: "Chris Smith", role: "Environmental Consultant", bio: "A Certified Steel Tank Inspector and expert in industrial compliance.", email: "chris@midwest-training.com", phone: "913-633-7344" },
+                    { name: "Marcia Hobbs", role: "Environmental Consultant", bio: "15+ years experience in environmental compliance for electric utility. OSHA certified SHEP professional.", email: "marcia@midwest-training.com", phone: "816-812-4175" },
+                    { name: "Amelia Kollmeyer", role: "Environmental Consultant", bio: "Specializing in industrial compliance and is a Certified Steel Tank Inspector.", email: "amelia@midwest-training.com", phone: "316-217-0266" },
+                    { name: "Simone Paton", role: "Environmental Consultant", bio: "Providing expert guidance on environmental standards.", email: "simone@midwest-training.com", phone: "913-549-7742" },
+                    { name: "Randen Smith", role: "Environmental Consultant", bio: "Specializing in site inspections.", email: "randen@midwest-training.com", phone: "913-645-0497" }
+                ],
+
+                services: [
+                    {
+                        id: "spcc",
+                        title: "SPCC Plans",
+                        shortDesc: "Premier provider for Spill Prevention plans in KS, MO, IA, and NE. Over 800 plans completed.",
+                        fullDesc: "Midwest Training and Consulting Services (MTCS) is the premier provider of the EPA's Spill Prevention, Control, and Countermeasure (SPCC) Plans. Companies meet the threshold of the SPCC Plan (40 CFR 112.7) at 1,320 gallons of oil products. Recent reviews show 85% of plans have deficiencies—we ensure your documentation meets every PE and EPA requirement.",
+                        features: ["Premier 4-State Area Provider", "40 CFR 112.7 Compliance", "PE Approved Technical Amendments", "Annual and Five-Year Review Management"],
+                        checklist: ["Threshold: 1,320 Gallons of oil/fuel products?", "Technical Amendments approved within 6 months?", "Management review conducted annually?", "5-Year EPA formal review completed?"]
+                    },
+                    {
+                        id: "swp",
+                        title: "SWP Plans",
+                        shortDesc: "Stormwater Pollution Prevention plans designed to ensure NDPES and Clean Water Act compliance.",
+                        fullDesc: "Facilities with industrial activity discharge must obtain coverage under an NPDES permit. We help you navigate 11 categories of industrial activity, Notice of Intent (NOI) submissions, and the development of site-specific Best Management Practices (BMP).",
+                        features: ["NPDES Permit Authorization", "SWP2 & BMP Development", "Notice of Intent (NOI) Support", "Periodic Visual Inspections"],
+                        checklist: ["Is Notice of Intent (NOI) submitted?", "Designated SWP2 administrator assigned?", "Personnel trained on site-specific plan?", "Periodic visual quality logs maintained?"]
+                    },
+                    {
+                        id: "tank",
+                        title: "Tank Integrity Testing",
+                        shortDesc: "Certified STI SP001 Inspectors using advanced ultrasound measurement for Above Ground Tanks.",
+                        fullDesc: "If you have a SPCC Plan, integrity testing is mandatory. We have three certified steel tank inspectors (STI SP001) on staff using non-destructive ultrasound measurement. This allows for inspections at a reduced rate for tanks not in contact with soil.",
+                        features: ["Three STI SP001 Certified Inspectors", "EPA 40 CFR 112.8 Compliance", "Non-destructive Ultrasound Testing", "UL 142 Stamped Label Verification"],
+                        checklist: ["Integrity testing program established?", "UL 142 label verified?", "Bulk containers (>55 gal) inspected every 10 years?"]
+                    },
+                    {
+                        id: "tri",
+                        title: "TRI & Tier II Reporting",
+                        shortDesc: "EPCRA Compliance and Hazardous Inventory. Tier II Reports due March 1st annually.",
+                        fullDesc: "Facilities covered by EPCRA must submit Tier II Reports annually by March 1st. We handle complex weight calculations for hazardous chemicals (pounds, not gallons), including overlooked items like forklift battery acid and compressed gases.",
+                        features: ["Annual March 1st Tier II Submissions", "Hazardous Chemical Weight Analysis", "LEPC / SERC / Fire Dept Coordination", "Site Diagrams & Chemical Lists"],
+                        checklist: ["Report submitted by March 1st?", "TPQ calculated in pounds (not gallons)?", "Forklift batteries included in 500lb threshold?", "Compressed gases weighed properly?"]
+                    },
+                    {
+                        id: "phase1",
+                        title: "Phase I ESA",
+                        shortDesc: "Environmental Site Assessments for property transactions, due diligence, and liability defense.",
+                        fullDesc: "Phase I ESA is required for owner/operators applying for liability defenses (Innocent Landowner, Brownfield's Grants). We follow ASTM E1527-05 standards to identify Recognized Environmental Conditions (RECs) before you purchase property.",
+                        features: ["ASTM E1527-05 Standards", "All Appropriate Inquiry (AAI) Support", "Historical Records & Site Reconnaissance", "Liability Defense Documentation"],
+                        checklist: ["Records review (Federal, State, UST) completed?", "Site reconnaissance of adjoining property done?", "Interviews with past/present owners conducted?"]
+                    },
+                    {
+                        id: "tank-mgmt",
+                        title: "Tank Management Systems",
+                        shortDesc: "Automated tracking, annual STI inspections, and oversight of owner responsibilities.",
+                        fullDesc: "Owners are responsible for fire codes and STI SP-001 compliance. Our program uses an automated tracking system to suspense inspection requirements, maintenance, and corrosion management for Above Ground Storage Tanks.",
+                        features: ["Automated Requirement Tracking", "STI Annual Inspection Oversight", "Corrosion & Water Management", "Grounding & Electrical wiring checks"],
+                        checklist: ["STI SP-001 compliance verified?", "Automated tracking set up for all locations?", "Quarterly environmental updates received?", "Ancillary equipment platforms inspected?"]
+                    }
+                ]
+            }
+        }
+    </script>
+
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        body, html { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; padding: 0; overflow-x: hidden;
+            background-color: #020617; 
+        }
+        [x-cloak] { display: none !important; }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(2, 6, 23, 1) 0%, rgba(15, 23, 42, 1) 100%);
+        }
+        .contact-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .contact-input:focus {
+            border-color: #3b82f6; outline: none; background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body x-data="siteHandler()">
+
+    <!-- Header Navigation -->
+    <nav :class="scrolled || isMenuOpen ? 'bg-slate-950 shadow-lg py-3' : 'bg-transparent py-4 lg:py-8'" 
+         class="fixed w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center" style="max-width: 90%;">
+            <div class="flex items-center cursor-pointer" @click="goHome()">
+                <div x-show="view === 'home'" class="flex flex-col">
+                    <span class="text-white font-black text-xl lg:text-3xl uppercase tracking-tight">Midwest Training</span>
+                    <span class="text-blue-400 text-[10px] font-bold tracking-[0.2em] uppercase">Consulting Services</span>
+                </div>
+                <div x-show="view === 'detail'" class="flex flex-col" x-cloak>
+                    <span class="text-white font-black text-xs lg:text-sm uppercase tracking-tighter mb-1">Midwest Training</span>
+                    <span class="text-blue-400 font-bold text-[8px] lg:text-[8px] uppercase tracking-widest">Consulting Services</span>
+                </div>
+            </div>
+            
+            <div class="hidden lg:flex items-center space-x-10">
+                <a href="#home" @click="goHome()" class="text-gray-300 hover:text-white font-bold text-sm uppercase tracking-widest">Home</a>
+                <a href="#about" @click="goHome()" class="text-gray-300 hover:text-white font-bold text-sm uppercase tracking-widest">About</a>
+                <a href="#services" @click="goHome()" class="text-gray-300 hover:text-white font-bold text-sm uppercase tracking-widest">Services</a>
+                <a href="#team" @click="goHome()" class="text-gray-300 hover:text-white font-bold text-sm uppercase tracking-widest">Our Team</a>
+                <a href="#contact-us" @click="goHome()" class="text-gray-300 hover:text-white font-bold text-sm uppercase tracking-widest">Contact</a>
+                <div class="flex items-center gap-6 ml-4">
+                    <a :href="LINKEDIN_URL" target="_blank" class="text-gray-300 hover:text-blue-400 transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                    <a href="tel:9137128077" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 shadow-lg text-sm transition-all">
+                        <i data-lucide="phone" class="w-4 h-4"></i> 913-712-8077
+                    </a>
+                </div>
+            </div>
+
+            <button class="lg:hidden text-white p-2" @click="isMenuOpen = !isMenuOpen">
+                <i x-show="!isMenuOpen" data-lucide="menu" class="w-8 h-8"></i>
+                <i x-show="isMenuOpen" data-lucide="x" class="w-8 h-8" x-cloak></i>
+            </button>
+        </div>
+
+        <div x-show="isMenuOpen" x-cloak x-transition class="lg:hidden bg-slate-950 p-8 flex flex-col space-y-8 border-t border-slate-900 min-h-screen">
+            <a href="#home" @click="goHome()" class="text-white font-bold text-lg uppercase tracking-widest">Home</a>
+            <a href="#about" @click="goHome()" class="text-white font-bold text-lg uppercase tracking-widest">About</a>
+            <a href="#services" @click="goHome()" class="text-white font-bold text-lg uppercase tracking-widest">Services</a>
+            <a href="#team" @click="goHome()" class="text-white font-bold text-lg uppercase tracking-widest">Our Team</a>
+            <a href="#contact-us" @click="goHome()" class="text-white font-bold text-lg uppercase tracking-widest">Contact</a>
+            <div class="pt-4 flex flex-col gap-6">
+                <a :href="LINKEDIN_URL" target="_blank" class="text-blue-400 flex items-center gap-2 font-bold uppercase tracking-widest">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i> LinkedIn
+                </a>
+                <a href="tel:9137128077" class="bg-blue-600 text-white p-4 rounded-xl text-center font-bold uppercase tracking-widest">Call 913-712-8077</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <main>
+        <!-- HOME VIEW -->
+        <div x-show="view === 'home'">
+            <!-- Hero -->
+            <!-- Change 21: min-h-[850px] h-[100vh] → min-h-screen -->
+            <section id="home" class="relative min-h-screen flex items-center hero-gradient overflow-hidden text-center md:text-left">
+                <!-- Change 2: added overflow-hidden w-full -->
+                <div class="container mx-auto px-6 relative z-20 pt-24 overflow-hidden w-full" style="max-width: 90%;">
+                    <div class="max-w-6xl">
+                        <!-- Change 1: text-5xl md:text-8xl → text-[1.9rem] sm:text-5xl md:text-8xl -->
+                        <h1 class="text-[1.9rem] sm:text-5xl md:text-8xl lg:text-[9rem] font-black text-white mb-6 md:mb-10 tracking-tighter uppercase leading-[0.9]">
+                            Environmental <br />
+                            <span class="text-blue-500 uppercase">Compliance</span> <br />
+                            <span class="text-slate-400 font-light italic uppercase">Simplified.</span>
+                        </h1>
+                        <!-- Change 3: text-lg md:text-3xl → text-sm sm:text-lg md:text-3xl; mb-12 → mb-8 -->
+                        <p class="text-sm sm:text-lg md:text-3xl text-slate-300 mb-8 md:mb-16 max-w-4xl font-light">
+                            We make environmental compliance easy and affordable. Assisting organizations across the US.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-6 md:gap-8 justify-center md:justify-start">
+                            <!-- Change 4: px-12 md:px-16 py-5 md:py-7 → px-8 sm:px-12 md:px-16 py-4 sm:py-5 md:py-7; text-lg md:text-2xl → text-base sm:text-lg md:text-2xl -->
+                            <a href="#services" class="bg-blue-600 hover:bg-blue-700 text-white text-center px-8 sm:px-12 md:px-16 py-4 sm:py-5 md:py-7 rounded-2xl font-black text-base sm:text-lg md:text-2xl shadow-2xl uppercase tracking-widest transition-all hover:-translate-y-1">Our Focus</a>
+                            <!-- Change 5: same button size changes -->
+                            <a href="#contact-us" class="bg-white/5 hover:bg-white/10 text-white text-center backdrop-blur-md border border-white/20 px-8 sm:px-12 md:px-16 py-4 sm:py-5 md:py-7 rounded-2xl font-bold text-base sm:text-lg md:text-2xl uppercase tracking-widest transition-all hover:-translate-y-1">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About -->
+            <!-- Change 8: py-32 → py-16 md:py-32 -->
+            <section id="about" class="py-16 md:py-32 bg-white">
+                <div class="container mx-auto px-6 text-center md:text-left" style="max-width: 90%;">
+                    <!-- Change 7: gap-20 → gap-10 lg:gap-20 -->
+                    <div class="grid lg:grid-cols-2 items-center gap-10 lg:gap-20">
+                        <div>
+                            <h2 class="text-blue-600 font-black tracking-[0.3em] text-sm uppercase mb-6">Our Mission</h2>
+                            <!-- Change 6: text-4xl md:text-7xl → text-3xl sm:text-4xl md:text-7xl -->
+                            <h3 class="text-3xl sm:text-4xl md:text-7xl font-black text-slate-900 tracking-tight uppercase mb-10 leading-tight">Expertise in <br />Compliance</h3>
+                            <p class="text-slate-500 text-lg md:text-2xl leading-relaxed mb-12">Midwest Training and Consulting Services was established in 1996 to make federal and state regulatory requirements accessible for every organization. We manage reporting for 900 facilities across the US.</p>
+                            <div class="grid grid-cols-2 gap-8 text-center max-w-xl mx-auto md:mx-0">
+                                <div class="bg-slate-50 p-8 rounded-3xl border-l-8 border-blue-600 shadow-sm">
+                                    <div class="text-4xl md:text-5xl font-black text-slate-900">US</div>
+                                    <div class="text-xs font-bold text-blue-500 uppercase tracking-widest mt-2">Reach</div>
+                                </div>
+                                <div class="bg-slate-50 p-8 rounded-3xl border-l-8 border-blue-600 shadow-sm">
+                                    <div class="text-4xl md:text-5xl font-black text-slate-900">900+</div>
+                                    <div class="text-xs font-bold text-blue-500 uppercase tracking-widest mt-2">Facilities</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 gap-6 text-left bg-slate-50 p-8 md:p-12 rounded-[3rem]">
+                            <h2 class="text-blue-600 font-black tracking-[0.3em] text-xs uppercase mb-2">Primary Groups We Serve</h2>
+                            <template x-for="industry in industries" :key="industry.title">
+                                <div class="flex gap-6 items-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm transition-all hover:scale-[1.02]">
+                                    <div class="flex-shrink-0 w-12 h-12 md:w-16 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg text-white">
+                                        <i :data-lucide="industry.icon" class="w-7 h-7"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="text-lg md:text-2xl font-black uppercase tracking-tight text-slate-900" x-text="industry.title"></h5>
+                                        <p class="text-slate-500 text-xs md:text-base leading-relaxed" x-text="industry.details"></p>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services -->
+            <!-- Change 9: py-32 → py-16 md:py-32 -->
+            <section id="services" class="py-16 md:py-32 bg-slate-100">
+                <!-- Change 11: mb-24 → mb-12 md:mb-24 -->
+                <div class="container mx-auto px-6 text-center mb-12 md:mb-24" style="max-width: 90%;">
+                    <!-- Change 10: text-4xl md:text-7xl → text-2xl sm:text-4xl md:text-7xl -->
+                    <h3 class="text-2xl sm:text-4xl md:text-7xl font-black text-slate-900 tracking-tight uppercase">Professional Solutions</h3>
+                </div>
+                <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12" style="max-width: 90%;">
+                    <template x-for="service in services" :key="service.id">
+                        <div @click="openService(service)" class="group bg-white p-10 md:p-14 rounded-[3rem] shadow-sm border border-slate-100 hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col items-center text-center">
+                            <h4 class="text-2xl md:text-4xl font-black text-slate-900 mb-6 group-hover:text-blue-600 transition-colors uppercase leading-tight" x-text="service.title"></h4>
+                            <p class="text-slate-500 leading-relaxed text-sm md:text-lg mb-8 line-clamp-3" x-text="service.shortDesc"></p>
+                            <div class="mt-auto flex items-center text-blue-600 text-xs md:text-sm font-black uppercase tracking-widest gap-2">
+                                View Details <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </section>
+
+            <!-- Team -->
+            <!-- Change 12: py-32 → py-16 md:py-32 (both instances) -->
+            <section id="team" class="py-16 md:py-32 bg-slate-950 text-white">
+                <!-- Change 14: mb-32 → mb-16 md:mb-32 -->
+                <div class="container mx-auto px-6 text-center mb-16 md:mb-32" style="max-width: 90%;">
+                    <h2 class="text-blue-500 font-black tracking-[0.3em] text-sm uppercase mb-6">Leadership & Experts</h2>
+                    <!-- Change 13: text-4xl md:text-7xl → text-3xl sm:text-4xl md:text-7xl -->
+                    <h3 class="text-3xl sm:text-4xl md:text-7xl font-black tracking-tight uppercase">The Team</h3>
+                </div>
+                <div class="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16" style="max-width: 90%;">
+                    <template x-for="member in team" :key="member.name">
+                        <div class="bg-slate-900 border border-slate-800 p-10 rounded-[3rem] hover:border-blue-500/50 transition-all text-center flex flex-col items-center">
+                            <div class="w-20 h-20 md:w-24 bg-blue-600 rounded-[2rem] flex items-center justify-center text-3xl font-black mb-8 shadow-2xl" x-text="getInitials(member.name)"></div>
+                            <h4 class="text-2xl md:text-3xl font-black mb-2 uppercase" x-text="member.name"></h4>
+                            <p class="text-blue-500 font-black uppercase tracking-widest text-xs mb-6" x-text="member.role"></p>
+                            <p class="text-slate-400 text-base md:text-xl font-light italic mb-10 max-w-sm" x-text="member.bio"></p>
+                            <div class="flex flex-col gap-4 border-t border-slate-800 pt-10 mt-auto w-full">
+                                <a :href="'mailto:'+member.email" class="flex items-center gap-4 text-sm text-slate-300 hover:text-white justify-center">
+                                    <i data-lucide="mail" class="w-5 h-5 text-blue-500"></i> <span x-text="member.email"></span>
+                                </a>
+                                <a :href="'tel:'+member.phone" class="flex items-center gap-4 text-sm text-slate-300 hover:text-white justify-center">
+                                    <i data-lucide="phone" class="w-5 h-5 text-blue-500"></i> <span x-text="member.phone"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <!-- Change 15: py-32 → py-16 md:py-32 -->
+            <section id="contact-us" class="py-16 md:py-32 bg-slate-900 text-white relative overflow-hidden px-6">
+                <div class="absolute top-0 right-0 w-1/3 h-full bg-blue-600/5 -skew-x-12 transform translate-x-1/2"></div>
+                <!-- Change 17: gap-24 → gap-12 lg:gap-24 -->
+                <div class="container mx-auto relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-24" style="max-width: 90%;">
+                    <div>
+                        <h2 class="text-blue-500 font-black tracking-[0.3em] text-sm uppercase mb-6">Get In Touch</h2>
+                        <!-- Change 16: text-4xl md:text-7xl → text-3xl sm:text-4xl md:text-7xl; Change 18: mb-10 → mb-6 md:mb-10 -->
+                        <h3 class="text-3xl sm:text-4xl md:text-7xl font-black uppercase mb-6 md:mb-10 leading-none">Ready to start?</h3>
+                        <p class="text-slate-400 text-lg md:text-2xl mb-12 max-w-2xl font-light">Have questions about federal or state requirements? Reach out to <strong>Steve Spencer</strong> directly or connect with us on LinkedIn.</p>
+                        <div class="space-y-10">
+                            <div class="flex items-center gap-6">
+                                <div class="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center text-blue-500"><i data-lucide="mail" class="w-8 h-8"></i></div>
+                                <div><p class="text-xs uppercase tracking-widest text-slate-500">Email Steve</p><p class="font-bold text-xl md:text-2xl">steve@midwest-training.com</p></div>
+                            </div>
+                            <div class="flex items-center gap-6">
+                                <div class="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center text-blue-500"><i data-lucide="phone" class="w-8 h-8"></i></div>
+                                <div><p class="text-xs uppercase tracking-widest text-slate-500">Direct Line</p><p class="font-bold text-xl md:text-2xl">316-644-6102</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800/40 backdrop-blur-md p-10 md:p-16 rounded-[3rem] border border-slate-700/50 shadow-2xl relative">
+                        <form action="https://formspree.io/f/myknwney" method="POST" class="space-y-6 md:space-y-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <input required name="name" type="text" placeholder="Full Name" class="w-full px-6 py-5 rounded-2xl contact-input">
+                                <input name="company" type="text" placeholder="Company" class="w-full px-6 py-5 rounded-2xl contact-input">
+                            </div>
+                            <input required name="email" type="email" placeholder="Email Address" class="w-full px-6 py-5 rounded-2xl contact-input">
+                            <textarea required name="message" rows="5" placeholder="Message" class="w-full px-6 py-5 rounded-2xl contact-input"></textarea>
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black uppercase py-6 rounded-2xl shadow-xl text-lg md:text-xl transition-all">Send to Steve</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- DETAIL VIEW -->
+        <div x-show="view === 'detail'" x-cloak class="min-h-screen bg-white text-slate-900 animate-fade-in pt-24">
+            <div class="container mx-auto px-6 py-12 md:py-20" style="max-width: 90%;">
+                <div class="max-w-4xl mx-auto">
+                    <button @click="goHome()" class="flex items-center gap-2 text-blue-600 font-bold uppercase tracking-widest text-sm mb-10 hover:text-slate-950 transition-colors">
+                        <i data-lucide="arrow-left" class="w-6 h-6"></i> Back to Home
+                    </button>
+                    <h1 class="text-3xl md:text-7xl font-black uppercase tracking-tighter text-slate-950 mb-8 leading-none" x-text="activeService?.title"></h1>
+                    <p class="text-lg md:text-2xl text-slate-700 font-medium leading-relaxed mb-12 border-l-4 border-blue-600 pl-4 md:pl-8" x-text="activeService?.fullDesc"></p>
+                    
+                    <template x-if="activeService?.checklist">
+                        <div class="mb-16 p-8 md:p-12 bg-slate-950 rounded-[2.5rem] md:rounded-[3rem] text-white shadow-2xl">
+                            <h3 class="text-blue-500 font-black uppercase tracking-widest text-sm mb-8">Requirement & Implementation Checklist</h3>
+                            <div class="space-y-6">
+                                <template x-for="item in activeService.checklist" :key="item">
+                                    <div class="flex gap-6 items-start border-b border-slate-800 pb-6 last:border-0">
+                                        <div class="w-6 h-6 bg-blue-600 rounded-full flex-shrink-0 mt-1 flex items-center justify-center"><i data-lucide="help-circle" class="w-5 h-5 text-white"></i></div>
+                                        <p class="text-base md:text-xl font-medium text-slate-300" x-text="item"></p>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+
+                    <div class="grid md:grid-cols-2 gap-12 mb-20">
+                        <div class="bg-slate-50 p-8 md:p-10 rounded-[2.5rem]">
+                            <h3 class="text-blue-600 font-black uppercase tracking-widest text-base md:text-xl mb-6">Key Deliverables</h3>
+                            <ul class="space-y-4">
+                                <template x-for="feat in activeService?.features" :key="feat">
+                                    <li class="flex items-center gap-4 text-slate-700 font-bold text-base md:text-lg">
+                                        <i data-lucide="check-circle-2" class="w-6 h-6 text-blue-500"></i> <span x-text="feat"></span>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                        <div class="flex flex-col justify-center text-center items-center">
+                            <h3 class="text-slate-900 font-black uppercase tracking-widest text-base md:text-xl mb-4">Get Started</h3>
+                            <p class="text-slate-500 text-base md:text-lg mb-8 max-w-sm">Ready to ensure your facility is fully compliant?</p>
+                            <a href="#contact-us" @click="goHome()" class="bg-slate-950 text-white px-10 py-5 rounded-2xl font-black text-center uppercase tracking-widest hover:bg-blue-600 transition-all shadow-xl text-lg w-full">Contact Steve Spencer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Change 19: py-24 → py-12 md:py-24; Change 20: mb-12 → mb-8 md:mb-12 -->
+    <footer class="bg-slate-950 py-12 md:py-24 border-t border-slate-900 text-slate-500 text-center px-6">
+        <div class="container mx-auto px-6" style="max-width: 90%;">
+            <div class="flex justify-center gap-10 mb-8 md:mb-12">
+                <a :href="LINKEDIN_URL" target="_blank" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-8 h-8"></i></a>
+            </div>
+            <p class="text-sm md:text-base uppercase tracking-[0.3em] mb-6">© 2026 Midwest Training and Consulting Services</p>
+            <p class="text-xs md:text-sm uppercase tracking-[0.1em]">913-712-8077 | Olathe, KS</p>
+        </div>
+    </footer>
+
+</body>
+</html>
