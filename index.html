@@ -152,55 +152,7 @@
 </head>
 <body x-data="siteHandler()">
 
-    <!-- Header Navigation -->
-    <nav :class="scrolled || isMenuOpen ? 'bg-slate-950 shadow-lg py-3' : 'bg-transparent py-4 lg:py-8'" 
-         class="fixed w-full z-50 transition-all duration-300">
-        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center" style="max-width: 90%;">
-            <div class="flex items-center cursor-pointer" @click="goHome()">
-                <div x-show="view === 'home'" class="flex flex-col">
-                    <span class="text-white font-black text-xl lg:text-3xl uppercase tracking-tight">Midwest Training</span>
-                    <span class="text-blue-400 text-[10px] font-bold tracking-[0.2em] uppercase">Consulting Services</span>
-                </div>
-                <div x-show="view === 'detail'" class="flex flex-col" x-cloak>
-                    <span class="text-white font-black text-xs lg:text-sm uppercase tracking-tighter mb-1">Midwest Training</span>
-                    <span class="text-blue-400 font-bold text-[8px] lg:text-[8px] uppercase tracking-widest">Consulting Services</span>
-                </div>
-            </div>
-            
-            <div class="hidden lg:flex items-center space-x-10">
-                <a href="#home" @click="goHome()" class="text-gray-300 hover:text-white font-bold text-sm uppercase tracking-widest">Home</a>
-                <a href="#about" @click="goHome()" class="text-gray-300 hover:text-white font-bold text-sm uppercase tracking-widest">About</a>
-                <a href="#services" @click="goHome()" class="text-gray-300 hover:text-white font-bold text-sm uppercase tracking-widest">Services</a>
-                <a href="#team" @click="goHome()" class="text-gray-300 hover:text-white font-bold text-sm uppercase tracking-widest">Our Team</a>
-                <a href="#contact-us" @click="goHome()" class="text-gray-300 hover:text-white font-bold text-sm uppercase tracking-widest">Contact</a>
-                <div class="flex items-center gap-6 ml-4">
-                    <a :href="LINKEDIN_URL" target="_blank" class="text-gray-300 hover:text-blue-400 transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-                    <a href="tel:9137128077" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 shadow-lg text-sm transition-all">
-                        <i data-lucide="phone" class="w-4 h-4"></i> 913-712-8077
-                    </a>
-                </div>
-            </div>
 
-            <button class="lg:hidden text-white p-2" @click="isMenuOpen = !isMenuOpen">
-                <i x-show="!isMenuOpen" data-lucide="menu" class="w-8 h-8"></i>
-                <i x-show="isMenuOpen" data-lucide="x" class="w-8 h-8" x-cloak></i>
-            </button>
-        </div>
-
-        <div x-show="isMenuOpen" x-cloak x-transition class="lg:hidden bg-slate-950 p-8 flex flex-col space-y-8 border-t border-slate-900 min-h-screen">
-            <a href="#home" @click="goHome()" class="text-white font-bold text-lg uppercase tracking-widest">Home</a>
-            <a href="#about" @click="goHome()" class="text-white font-bold text-lg uppercase tracking-widest">About</a>
-            <a href="#services" @click="goHome()" class="text-white font-bold text-lg uppercase tracking-widest">Services</a>
-            <a href="#team" @click="goHome()" class="text-white font-bold text-lg uppercase tracking-widest">Our Team</a>
-            <a href="#contact-us" @click="goHome()" class="text-white font-bold text-lg uppercase tracking-widest">Contact</a>
-            <div class="pt-4 flex flex-col gap-6">
-                <a :href="LINKEDIN_URL" target="_blank" class="text-blue-400 flex items-center gap-2 font-bold uppercase tracking-widest">
-                    <i data-lucide="linkedin" class="w-6 h-6"></i> LinkedIn
-                </a>
-                <a href="tel:9137128077" class="bg-blue-600 text-white p-4 rounded-xl text-center font-bold uppercase tracking-widest">Call 913-712-8077</a>
-            </div>
-        </div>
-    </nav>
 
     <!-- CONTENT -->
     <main>
@@ -210,7 +162,7 @@
             <!-- Change 21: min-h-[850px] h-[100vh] → min-h-screen -->
             <section id="home" class="relative min-h-screen flex items-center hero-gradient overflow-hidden text-center md:text-left">
                 <!-- Change 2: added overflow-hidden w-full -->
-                <div class="container mx-auto px-6 relative z-20 pt-24 overflow-hidden w-full" style="max-width: 90%;">
+                <div class="container mx-auto px-6 relative z-20 overflow-hidden w-full" style="max-width: 90%;">
                     <div class="max-w-6xl">
                         <!-- Change 1: text-5xl md:text-8xl → text-[1.9rem] sm:text-5xl md:text-8xl -->
                         <h1 class="text-[1.9rem] sm:text-5xl md:text-8xl lg:text-[9rem] font-black text-white mb-6 md:mb-10 tracking-tighter uppercase leading-[0.9]">
