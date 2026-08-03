@@ -132,6 +132,9 @@
             overflow-y: auto;
             height: auto;
         }
+        /* Hide scrollbar across all browsers */
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
         [x-cloak] { display: none !important; }
         .hero-gradient {
             background: linear-gradient(135deg, rgba(2, 6, 23, 1) 0%, rgba(15, 23, 42, 1) 100%);
