@@ -122,6 +122,18 @@
     </script>
 
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        // Auto-resize: tell parent Wix page our full document height
+        function sendHeight() {
+            var height = document.documentElement.scrollHeight || document.body.scrollHeight;
+            window.parent.postMessage({ type: 'wix-iframe-height', height: height }, '*');
+        }
+        window.addEventListener('load', function() {
+            sendHeight();
+            setInterval(sendHeight, 500);
+        });
+        window.addEventListener('resize', sendHeight);
+    </script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
@@ -208,7 +220,7 @@
         <div x-show="view === 'home'">
             <!-- Hero -->
             <!-- Change 21: min-h-[850px] h-[100vh] → min-h-screen -->
-            <section id="home" class="relative min-h-screen flex items-center hero-gradient overflow-hidden text-center md:text-left">
+            <section id="home" class="relative min-h-[600px] md:min-h-[800px] flex items-center hero-gradient overflow-hidden text-center md:text-left">
                 <!-- Change 2: added overflow-hidden w-full -->
                 <div class="container mx-auto px-6 relative z-20 overflow-hidden w-full" style="max-width: 90%;">
                     <div class="max-w-6xl">
