@@ -167,8 +167,7 @@
 <body x-data="siteHandler()">
 
     <!-- Header Navigation -->
-    <nav :class="scrolled || isMenuOpen ? 'bg-slate-950 shadow-lg py-3' : 'bg-transparent py-4 lg:py-8'" 
-         class="fixed w-full z-50 transition-all duration-300" style="top: 0 !important; left: 0 !important;">
+    <nav class="bg-slate-950 shadow-lg py-3 fixed w-full z-50 transition-all duration-300" style="top: 0 !important; left: 0 !important;">
         <div class="container mx-auto px-4 md:px-6 flex justify-between items-center" style="max-width: 90%;">
             <div class="flex items-center cursor-pointer" @click="goHome()">
                 <div x-show="view === 'home'" class="flex flex-col">
@@ -222,7 +221,7 @@
         <div x-show="view === 'home'">
             <!-- Hero -->
             <!-- Change 21: min-h-[850px] h-[100vh] → min-h-screen -->
-            <section id="home" class="relative min-h-[600px] md:min-h-[800px] flex items-center hero-gradient overflow-hidden text-center md:text-left">
+            <section id="home" class="relative min-h-[600px] md:min-h-[800px] flex items-center hero-gradient overflow-hidden text-center md:text-left pt-20">
                 <!-- Change 2: added overflow-hidden w-full -->
                 <div class="container mx-auto px-6 relative z-20 overflow-hidden w-full" style="max-width: 90%;">
                     <div class="max-w-6xl">
