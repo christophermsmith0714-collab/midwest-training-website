@@ -51,9 +51,7 @@
                 goHome() {
                     this.view = 'home';
                     this.isMenuOpen = false;
-                    document.body.scrollTop = 0;
-                    document.documentElement.scrollTop = 0;
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    window.parent.postMessage({ type: 'scrollTo', offset: 0 }, '*');
                     this.updateIcons();
                 },
                 
@@ -61,9 +59,7 @@
                     this.activeService = service;
                     this.view = 'detail';
                     this.isMenuOpen = false;
-                    document.body.scrollTop = 0;
-                    document.documentElement.scrollTop = 0;
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    window.parent.postMessage({ type: 'scrollTo', offset: 0 }, '*');
                     this.updateIcons();
                 },
 
