@@ -20,3 +20,12 @@ html{scroll-behavior:smooth;scroll-padding-top:24px}h1,h2{font-family:'Barlow Co
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 
 .recovery-page .header-inner{display:flex;justify-content:center}.recovery-page .hero-actions{justify-content:flex-start;align-items:flex-start}.recovery-page .button-outline{color:#fff;border-color:#afc3dd}.recovery-page .button-outline:hover{background:#ffffff20}
+
+/* Light-on-navy logo variant; screen blending removes the black compositing matte. */
+.brand{max-width:100%;min-width:0}
+.brand .brand-logo{position:relative;display:block;width:320px;max-width:100%;aspect-ratio:1730/440;overflow:hidden;margin:0;background:transparent;mix-blend-mode:screen}
+.brand-logo img{position:absolute;width:117.399%;max-width:none;height:auto;left:-8.671%;top:-38.636%}
+.site-header .header-inner{min-height:125px}
+.site-footer .brand{width:300px}.site-footer .brand .brand-logo{width:100%}.footer-grid>div{min-width:0}
+@media(max-width:980px){.site-header .header-inner{min-height:102px}.brand .brand-logo{width:260px}}
+@media(max-width:480px){.site-header .header-inner{min-height:88px}.site-header .brand .brand-logo{width:min(248px,calc(100vw - 112px))}}

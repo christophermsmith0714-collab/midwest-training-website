@@ -23,3 +23,8 @@ The original customer screenshot and PDF are not included. The app examples use 
 ## Remaining launch work
 
 Verify Formspree receipt in Chris's inbox, activate the release forms, remove preview notices and search blocking from normal pages, and coordinate GitHub Pages and Directnic website records for the domain cutover. Keep the existing email DNS records intact. The local launch plan includes the detailed activation and rollback steps.
+
+
+## Logo update — September 14, 2026
+
+The header, footer, and 404 page use the owner's MTCS logo in a white-and-blue treatment that blends into the navy background. The asset was produced with built-in image editing from the supplied logo; CSS screen blending removes the black matte. The wording and two-line name/tagline arrangement are retained. The original white-box logo is not used in this package. Desktop and 320 px phone checks showed no horizontal overflow, and all seven automated checks passed.
