@@ -29,3 +29,5 @@ html{scroll-behavior:smooth;scroll-padding-top:24px}h1,h2{font-family:'Barlow Co
 .site-footer .brand{width:300px}.site-footer .brand .brand-logo{width:100%}.footer-grid>div{min-width:0}
 @media(max-width:980px){.site-header .header-inner{min-height:102px}.brand .brand-logo{width:260px}}
 @media(max-width:480px){.site-header .header-inner{min-height:88px}.site-header .brand .brand-logo{width:min(248px,calc(100vw - 112px))}}
+
+.form-data-note{font-size:.76rem;line-height:1.6;color:var(--muted);margin-top:14px}

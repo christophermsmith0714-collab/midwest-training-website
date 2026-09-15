@@ -1,7 +1,7 @@
 export const FORM_ENDPOINT = 'https://formspree.io/f/myknwney';
 
-// Keep all review copies inert. Enable only as a separately approved release step.
-export const LIVE_SUBMISSIONS_ENABLED = false;
+// Production form delivery verified by an accepted test and owner-confirmed inbox receipt.
+export const LIVE_SUBMISSIONS_ENABLED = true;
 
 export async function submitInquiry(data, { live = false, fetchImpl = globalThis.fetch, signal } = {}) {
   if (!live) return { kind: 'preview', message: 'Preview complete — this request was not sent. On the published site, this is where we will confirm your submission.' };

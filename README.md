@@ -1,30 +1,20 @@
-# Midwest Training & Consulting Services — website review
+# Midwest Training & Consulting Services
 
-The approved blue environmental website is saved on this review branch. It contains 12 pages, six service images, the Inspection App page, anonymized inspection examples, a legacy /home redirect, and a custom 404.
+The approved blue environmental website contains 12 pages, six service photos, the Inspection App page, anonymized inspection examples, a legacy /home redirect, and a custom 404.
 
-This is a static HTML/CSS/JavaScript website. Each page has its own directory and index.html. Website files are at the repository root; no build step is required for static hosting.
+## Hosting
 
-## Launch status
+This static HTML/CSS/JavaScript website publishes from the root of main through the existing GitHub Pages setup:
+https://christophermsmith0714-collab.github.io/midwest-training-website/
 
-- The owner authorized pushing this review version to GitHub on September 13, 2026.
-- The live main branch and its Wix/GitHub Pages setup are not changed by this review branch.
-- Intended final address: https://www.midwest-training.com/
-- Requested quote recipient: chris@midwest-training.com. Formspree destination and delivery have not yet been verified.
-- Preview notices, noindex metadata, robots blocking, and disabled submissions remain enabled here. Do not merge this into the live publishing branch until launch activation and delivery verification are completed.
-- Current Formspree endpoint: https://formspree.io/f/myknwney. Live delivery must be configured in the Formspree account, not by simply adding an email address to the website.
-- The CNAME needed for direct-domain activation is intentionally absent until the domain cutover.
+The existing Wix website at https://www.midwest-training.com/ embeds that GitHub address. No custom domain, DNS, nameservers, or email records are changed for this release. assets/wix-embed.mjs preserves the existing Wix height and scrolling message protocol and sends layout data only to the two MTCS domain origins. Direct hosting on the business domain remains a future option when Directnic access is available; it requires a coordinated change and a release with updated page addresses.
 
-## Review checks
+## Inquiries
 
-Seven automated checks passed before packaging. All packaged file hashes were verified before this push. Browser checks covered the redesigned pages in earlier review, and the added redirect and 404 were checked during launch preparation.
+The release has active quote forms using https://formspree.io/f/myknwney. Delivery to chris@midwest-training.com was tested successfully and confirmed by Chris. The separate local preview and review branch remain inert. Normal pages have searchable metadata and GitHub page addresses; the redirect and 404 remain noindex.
 
-The original customer screenshot and PDF are not included. The app examples use a generic facility name and address. Environmental service photos are illustrative AI-generated scenes, not photographs of MTCS customers or staff. The locally served heading font includes its license in assets/fonts/.
+## Assets and validation
 
-## Remaining launch work
+The header and footer use the owner's logo blended into navy. The inspection examples use a generic facility name and address; original customer documents are excluded. Environmental service photos are illustrative AI-generated scenes. The self-hosted Barlow Condensed font includes its license in assets/fonts/.
 
-Verify Formspree receipt in Chris's inbox, activate the release forms, remove preview notices and search blocking from normal pages, and coordinate GitHub Pages and Directnic website records for the domain cutover. Keep the existing email DNS records intact. The local launch plan includes the detailed activation and rollback steps.
-
-
-## Logo update — September 14, 2026
-
-The header, footer, and 404 page use the owner's MTCS logo in a white-and-blue treatment that blends into the navy background. The asset was produced with built-in image editing from the supplied logo; CSS screen blending removes the black matte. The wording and two-line name/tagline arrangement are retained. The original white-box logo is not used in this package. Desktop and 320 px phone checks showed no horizontal overflow, and all seven automated checks passed.
+All local navigation, assets, fragment links, and page addresses were validated for GitHub's repository path. Seven existing automated checks and three Wix bridge checks passed. Deployment and live integration are verified separately after publishing.
