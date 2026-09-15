@@ -9,6 +9,13 @@ https://christophermsmith0714-collab.github.io/midwest-training-website/
 
 The existing Wix website at https://www.midwest-training.com/ embeds that GitHub address. No custom domain, DNS, nameservers, or email records are changed for this release. assets/wix-embed.mjs preserves the existing Wix height and scrolling message protocol and sends layout data only to the two MTCS domain origins. Direct hosting on the business domain remains a future option when Directnic access is available; it requires a coordinated change and a release with updated page addresses.
 
+## Wix height adjustment
+
+The original HTML embed has a fixed editor height. For pages that grow and shrink, replace that embed in Wix with a Custom Element using this script URL:
+https://christophermsmith0714-collab.github.io/midwest-training-website/assets/wix-website-element.js
+
+Use the tag name `mtcs-website`, stretch it across the page, and fit the surrounding section/page height to the element. Remove the old `#htmlComp` page handler when replacing the old component; the custom element handles the same scrolling messages and adjusts its own height. This script is available for installation; publishing the script does not change the Wix editor automatically. Wix renders custom elements differently inside its editor/preview, so verify sizing on the published site. Source: https://support.wix.com/en/article/wix-editor-adding-a-custom-element-to-your-site
+
 ## Inquiries
 
 The release has active quote forms using https://formspree.io/f/myknwney. Delivery to chris@midwest-training.com was tested successfully and confirmed by Chris. The separate local preview and review branch remain inert. Normal pages have searchable metadata and GitHub page addresses; the redirect and 404 remain noindex.
