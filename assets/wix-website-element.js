@@ -11,14 +11,21 @@
       if (this._connected) return;
       this._connected = true;
       this.style.display = 'block';
-      this.style.width = '100%';
+      // Wix supplies the configured width via this property. A percentage inside
+      // its auto-sized flex wrapper otherwise collapses to the iframe's 300px default.
+      this.style.width = 'var(--custom-element-width, 100%)';
       this.style.minWidth = '0';
+      // Wix's editor height is a starting size, not a minimum for every page.
+      this.style.minHeight = '0';
       this.style.height = this._height ? `${this._height}px` : '1200px';
       if (!this._frame) {
         this._frame = document.createElement('iframe');
         this._frame.title = 'Midwest Training & Consulting Services website';
         this._frame.referrerPolicy = 'strict-origin-when-cross-origin';
         this._frame.style.cssText = 'display:block;width:100%;height:100%;border:0;margin:0;padding:0;';
+        this._frame.addEventListener('load', () => {
+          this._frame.contentWindow.postMessage({ type: 'mtcs-embed-init' }, websiteOrigin);
+        });
         this._frame.src = website;
       }
       this._onMessage = event => {
