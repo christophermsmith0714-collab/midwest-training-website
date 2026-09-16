@@ -1,4 +1,4 @@
-import './wix-embed.mjs';
+import './wix-embed.mjs?v=4f89a1295891';
 import { LIVE_SUBMISSIONS_ENABLED, submitInquiry } from './inquiry.mjs';
 
 for (const form of document.querySelectorAll('.quote-form')) {
